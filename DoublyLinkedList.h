@@ -79,6 +79,25 @@ public:
         return val;
     }
 
+    T& operator[](int index) {
+        if (index < 0 || index >= size) {
+            throw std::out_of_range("Index out of bounds.");
+        }
+        Node<T>* current;
+        if (index < size / 2) { // Iterate from head for efficiency
+            current = head.get();
+            for (int i = 0; i < index; ++i) {
+                current = current->next.get();
+            }
+        } else { // Iterate from tail for efficiency
+            current = tail;
+            for (int i = size - 1; i > index; --i) {
+                current = current->prev;
+            }
+        }
+        return current->data;
+    }
+
 };
 
 
