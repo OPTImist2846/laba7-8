@@ -18,7 +18,7 @@ public:
 
     // Destructor (unique_ptr handles head, remaining nodes are linked via next)
     ~DoublyLinkedList() = default;
-
+    // a. Додавання на початок списку
     void pushFront(T val) {
         std::unique_ptr<Node<T>> newNode = std::make_unique<Node<T>>(val);
         if (!head) {
@@ -31,7 +31,7 @@ public:
         }
         size++;
     }
-
+    // a. Додавання на кінець списку
     void pushBack(T val) {
         std::unique_ptr<Node<T>> newNode = std::make_unique<Node<T>>(val);
         if (!head) {
@@ -44,7 +44,7 @@ public:
         }
         size++;
     }
-
+    // b. Вилучення першого елемента
     T popFront() {
         if (!head) {
             throw std::runtime_error("List is empty. Cannot pop from front.");
@@ -59,7 +59,7 @@ public:
         size--;
         return val;
     }
-
+    // b. Вилучення останнього елемента
     T popBack() {
         if (!head) {
             throw std::runtime_error("List is empty. Cannot pop from back.");
@@ -78,7 +78,7 @@ public:
         size--;
         return val;
     }
-
+    // c. Можливість доступу до елементу за індексом
     T& operator[](int index) {
         if (index < 0 || index >= size) {
             throw std::out_of_range("Index out of bounds.");
@@ -97,7 +97,7 @@ public:
         }
         return current->data;
     }
-
+    // d. Додавання елементу за індексом
     void insert(int index, T val) {
         if (index < 0 || index > size) {
             throw std::out_of_range("Index out of bounds for insertion.");
@@ -131,7 +131,7 @@ public:
         current->prev->next = std::move(newNode);
         size++;
     }
-
+    // d. Вилучення елементу за індексом
     T removeAt(int index) {
         if (index < 0 || index >= size) {
             throw std::out_of_range("Index out of bounds for removal.");
@@ -163,15 +163,15 @@ public:
         size--;
         return val;
     }
-
+    // e. Перевірка на розмір
     int getSize() const {
         return size;
     }
-
+    // f. Перевірка чи список не порожній
     bool isEmpty() const {
         return size == 0;
     }
-
+    // g. Пошук елемента у списку
     int find(T val) const {
         Node<T>* current = head.get();
         int index = 0;
@@ -184,7 +184,7 @@ public:
         }
         return -1; // Element not found
     }
-
+    // h. Можливість виведення списку на екран
     friend std::ostream& operator<<(std::ostream& os, const DoublyLinkedList<T>& list) {
         Node<T>* current = list.head.get();
         os << "[";
