@@ -117,6 +117,10 @@ public:
         size--;
         return val;
     }
+
+    int getSize() const {
+        return size;
+    }
 };
 
 #endif //SINGLYLINKEDLIST_H
