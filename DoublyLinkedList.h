@@ -31,6 +31,19 @@ public:
         }
         size++;
     }
+
+    void pushBack(T val) {
+        std::unique_ptr<Node<T>> newNode = std::make_unique<Node<T>>(val);
+        if (!head) {
+            head = std::move(newNode);
+            tail = head.get();
+        } else {
+            tail->next = std::move(newNode);
+            tail->next->prev = tail; // Set prev of the new node
+            tail = tail->next.get();
+        }
+        size++;
+    }
 };
 
 
