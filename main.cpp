@@ -47,6 +47,6 @@ int main() {
 
     std::cout << "\n--- Doubly Linked List Example ---\n";
     DoublyLinkedList<std::string> dList;
-    std::cout << "Is empty: " << dList.isEmpty()
+    std::cout << "Is empty: " << dList.isEmpty();
     return 0;
 }
