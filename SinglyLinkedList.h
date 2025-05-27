@@ -27,6 +27,20 @@ public:
         head = std::move(newNode);
         size++;
     }
+
+    void pushBack(T val) {
+        std::unique_ptr<Node<T>> newNode = std::make_unique<Node<T>>(val);
+        if (!head) {
+            head = std::move(newNode);
+        } else {
+            Node<T>* current = head.get();
+            while (current->next) {
+                current = current->next.get();
+            }
+            current->next = std::move(newNode);
+        }
+        size++;
+    }
 };
 
 #endif //SINGLYLINKEDLIST_H
