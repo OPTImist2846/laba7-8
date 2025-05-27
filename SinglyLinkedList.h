@@ -62,6 +62,17 @@ public:
         size--;
         return val;
     }
+
+    T& operator[](int index) {
+        if (index < 0 || index >= size) {
+            throw std::out_of_range("Index out of bounds.");
+        }
+        Node<T>* current = head.get();
+        for (int i = 0; i < index; ++i) {
+            current = current->next.get();
+        }
+        return current->data;
+    }
 };
 
 #endif //SINGLYLINKEDLIST_H
