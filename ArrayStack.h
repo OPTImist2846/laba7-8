@@ -53,6 +53,11 @@ public:
     bool isEmpty() const {
         return topIndex == -1;
     }
+
+    // d. isFull: Перевіряє, чи стек повний
+    bool isFull() const {
+        return topIndex == capacity - 1;
+    }
 };
 
 
