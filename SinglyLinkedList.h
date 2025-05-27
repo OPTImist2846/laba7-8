@@ -96,6 +96,27 @@ public:
         current->next = std::move(newNode);
         size++;
     }
+
+    T removeAt(int index) {
+        if (index < 0 || index >= size) {
+            throw std::out_of_range("Index out of bounds for removal.");
+        }
+        if (index == 0) {
+            return popFront();
+        }
+        if (index == size - 1) {
+            return popBack();
+        }
+
+        Node<T>* current = head.get();
+        for (int i = 0; i < index - 1; ++i) {
+            current = current->next.get();
+        }
+        T val = current->next->data;
+        current->next = std::move(current->next->next);
+        size--;
+        return val;
+    }
 };
 
 #endif //SINGLYLINKEDLIST_H
