@@ -16,12 +16,21 @@ public:
         if (size <= 0) {
             throw std::invalid_argument("Stack capacity must be positive.");
         }
-        arr = new T[capacity]; // Виділяємо пам'ять для масиву
+        arr = new T[capacity];
     }
 
-    // Деструктор: звільняє виділену динамічну пам'ять
     ~ArrayStack() {
         delete[] arr;
+    }
+    ArrayStack(const ArrayStack&) = delete;
+    ArrayStack& operator=(const ArrayStack&) = delete;
+
+    // a. Push: Додає елемент на вершину стеку
+    void push(T val) {
+        if (isFull()) {
+            throw std::runtime_error("Stack overflow: Cannot push to a full stack.");
+        }
+        arr[++topIndex] = val; // Збільшуємо індекс і додаємо елемент
     }
 };
 
