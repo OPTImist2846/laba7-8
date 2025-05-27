@@ -60,6 +60,25 @@ public:
         return val;
     }
 
+    T popBack() {
+        if (!head) {
+            throw std::runtime_error("List is empty. Cannot pop from back.");
+        }
+        if (size == 1) {
+            T val = head->data;
+            head = nullptr;
+            tail = nullptr;
+            size--;
+            return val;
+        }
+
+        T val = tail->data;
+        tail = tail->prev;
+        tail->next = nullptr; // The unique_ptr of the last node is now destroyed
+        size--;
+        return val;
+    }
+
 };
 
 
