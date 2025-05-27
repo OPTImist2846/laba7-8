@@ -164,6 +164,9 @@ public:
         return val;
     }
 
+    int getSize() const {
+        return size;
+    }
 
 };
 
