@@ -56,5 +56,9 @@ public:
     bool isFull() const {
         return false; // Завжди false, якщо не вичерпано системну пам'ять
     }
+
+    int getSize() const {
+        return currentSize;
+    }
     };
 #endif //LINKEDLISTSTACK_H
