@@ -41,6 +41,27 @@ public:
         }
         size++;
     }
+
+    T popBack() {
+        if (!head) {
+            throw std::runtime_error("List is empty. Cannot pop from back.");
+        }
+        if (size == 1) {
+            T val = head->data;
+            head = nullptr;
+            size--;
+            return val;
+        }
+
+        Node<T>* current = head.get();
+        while (current->next && current->next->next) {
+            current = current->next.get();
+        }
+        T val = current->next->data;
+        current->next = nullptr;
+        size--;
+        return val;
+    }
 };
 
 #endif //SINGLYLINKEDLIST_H
