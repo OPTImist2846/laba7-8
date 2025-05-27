@@ -49,6 +49,10 @@ public:
         return arr[topIndex];
     }
 
+    // d. isEmpty: Перевіряє, чи стек порожній
+    bool isEmpty() const {
+        return topIndex == -1;
+    }
 };
 
 
