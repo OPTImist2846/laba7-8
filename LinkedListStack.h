@@ -46,5 +46,10 @@ public:
         }
         return topNode->data;
     }
+
+    // d. isEmpty: Перевіряє, чи стек порожній
+    bool isEmpty() const {
+        return topNode == nullptr; // або currentSize == 0
+    }
     };
 #endif //LINKEDLISTSTACK_H
