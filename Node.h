@@ -1,3 +1,5 @@
+#ifndef NODE_H
+#define NODE_H
 #include <memory>
 
 template <typename T>
@@ -13,3 +15,4 @@ struct Node {
     Node(T val, Node<T>* p) : data(val), next(nullptr), prev(p) {}
 };
 
+#endif
