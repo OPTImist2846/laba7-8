@@ -98,6 +98,40 @@ public:
         return current->data;
     }
 
+    void insert(int index, T val) {
+        if (index < 0 || index > size) {
+            throw std::out_of_range("Index out of bounds for insertion.");
+        }
+        if (index == 0) {
+            pushFront(val);
+            return;
+        }
+        if (index == size) {
+            pushBack(val);
+            return;
+        }
+
+        Node<T>* current;
+        if (index < size / 2) {
+            current = head.get();
+            for (int i = 0; i < index; ++i) {
+                current = current->next.get();
+            }
+        } else {
+            current = tail;
+            for (int i = size - 1; i >= index; --i) {
+                current = current->prev;
+            }
+        }
+        std::unique_ptr<Node<T>> newNode = std::make_unique<Node<T>>(val, current->prev);
+        newNode->next = std::move(current->prev->next);
+        if (newNode->next) { // If not inserting at the very end
+            newNode->next->prev = newNode.get();
+        }
+        current->prev->next = std::move(newNode);
+        size++;
+    }
+
 };
 
 
