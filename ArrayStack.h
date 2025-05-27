@@ -40,6 +40,15 @@ public:
         }
         return arr[topIndex--]; // Повертаємо елемент і зменшуємо індекс
     }
+
+    // c. Peek: Повертає елемент з вершини стеку без видалення
+    T peek() const {
+        if (isEmpty()) {
+            throw std::runtime_error("Stack is empty: Cannot peek at an empty stack.");
+        }
+        return arr[topIndex];
+    }
+
 };
 
 
