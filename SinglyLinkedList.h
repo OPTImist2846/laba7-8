@@ -73,6 +73,29 @@ public:
         }
         return current->data;
     }
+
+     void insert(int index, T val) {
+        if (index < 0 || index > size) {
+            throw std::out_of_range("Index out of bounds for insertion.");
+        }
+        if (index == 0) {
+            pushFront(val);
+            return;
+        }
+        if (index == size) {
+            pushBack(val);
+            return;
+        }
+
+        Node<T>* current = head.get();
+        for (int i = 0; i < index - 1; ++i) {
+            current = current->next.get();
+        }
+        std::unique_ptr<Node<T>> newNode = std::make_unique<Node<T>>(val);
+        newNode->next = std::move(current->next);
+        current->next = std::move(newNode);
+        size++;
+    }
 };
 
 #endif //SINGLYLINKEDLIST_H
