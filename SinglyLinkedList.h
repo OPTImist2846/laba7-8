@@ -125,6 +125,19 @@ public:
     bool isEmpty() const {
         return size == 0;
     }
+
+    int find(T val) const {
+        Node<T>* current = head.get();
+        int index = 0;
+        while (current) {
+            if (current->data == val) {
+                return index;
+            }
+            current = current->next.get();
+            index++;
+        }
+        return -1; // Element not found
+    }
 };
 
 #endif //SINGLYLINKEDLIST_H
