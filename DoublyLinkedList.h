@@ -185,6 +185,19 @@ public:
         return -1; // Element not found
     }
 
+    friend std::ostream& operator<<(std::ostream& os, const DoublyLinkedList<T>& list) {
+        Node<T>* current = list.head.get();
+        os << "[";
+        while (current) {
+            os << current->data;
+            if (current->next) {
+                os << " <-> ";
+            }
+            current = current->next.get();
+        }
+        os << "]";
+        return os;
+    }
 };
 
 
