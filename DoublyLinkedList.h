@@ -132,6 +132,39 @@ public:
         size++;
     }
 
+    T removeAt(int index) {
+        if (index < 0 || index >= size) {
+            throw std::out_of_range("Index out of bounds for removal.");
+        }
+        if (index == 0) {
+            return popFront();
+        }
+        if (index == size - 1) {
+            return popBack();
+        }
+
+        Node<T>* current;
+        if (index < size / 2) {
+            current = head.get();
+            for (int i = 0; i < index; ++i) {
+                current = current->next.get();
+            }
+        } else {
+            current = tail;
+            for (int i = size - 1; i > index; --i) {
+                current = current->prev;
+            }
+        }
+        T val = current->data;
+        current->prev->next = std::move(current->next);
+        if (current->next) {
+            current->next->prev = current->prev;
+        }
+        size--;
+        return val;
+    }
+
+
 };
 
 
