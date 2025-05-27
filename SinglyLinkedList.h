@@ -18,6 +18,15 @@ public:
 
     // Destructor (unique_ptr automatically handles memory deallocation of nodes)
     ~SinglyLinkedList() = default;
+
+     void pushFront(T val) {
+        std::unique_ptr<Node<T>> newNode = std::make_unique<Node<T>>(val);
+        if (head) {
+            newNode->next = std::move(head);
+        }
+        head = std::move(newNode);
+        size++;
+    }
 };
 
 #endif //SINGLYLINKEDLIST_H
