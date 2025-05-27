@@ -44,6 +44,22 @@ public:
         }
         size++;
     }
+
+    T popFront() {
+        if (!head) {
+            throw std::runtime_error("List is empty. Cannot pop from front.");
+        }
+        T val = head->data;
+        head = std::move(head->next);
+        if (head) {
+            head->prev = nullptr;
+        } else {
+            tail = nullptr; // List became empty
+        }
+        size--;
+        return val;
+    }
+
 };
 
 
