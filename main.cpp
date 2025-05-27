@@ -7,9 +7,9 @@ int main() {
     SinglyLinkedList<int> sList;
     std::cout << "Is empty: " << sList.isEmpty() << "\n"; // 1 (true)
 
-    sList.pushBack(10);
-    sList.pushFront(5);
-    sList.pushBack(20);
+    sList.pushBack(4);
+    sList.pushFront(4);
+    sList.pushBack(6);
     std::cout << "List after pushBack/pushFront: " << sList << "\n"; // [5 -> 10 -> 20]
     std::cout << "Size: " << sList.getSize() << "\n"; // 3
 
