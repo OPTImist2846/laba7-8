@@ -58,6 +58,10 @@ public:
     bool isFull() const {
         return topIndex == capacity - 1;
     }
+
+    int getSize() const {
+        return topIndex + 1;
+    }
 };
 
 
