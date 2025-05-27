@@ -51,5 +51,10 @@ public:
     bool isEmpty() const {
         return topNode == nullptr; // або currentSize == 0
     }
+
+    // d. isFull: Стек на зв'язаному списку динамічний і ніколи не є "повним" (обмежений лише системною пам'яттю)
+    bool isFull() const {
+        return false; // Завжди false, якщо не вичерпано системну пам'ять
+    }
     };
 #endif //LINKEDLISTSTACK_H
