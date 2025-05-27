@@ -32,6 +32,14 @@ public:
         }
         arr[++topIndex] = val; // Збільшуємо індекс і додаємо елемент
     }
+
+    // b. Pop: Видаляє і повертає елемент з вершини стеку
+    T pop() {
+        if (isEmpty()) {
+            throw std::runtime_error("Stack underflow: Cannot pop from an empty stack.");
+        }
+        return arr[topIndex--]; // Повертаємо елемент і зменшуємо індекс
+    }
 };
 
 
