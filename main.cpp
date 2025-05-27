@@ -18,5 +18,11 @@ int main() {
 
     std::cout << "Element at index 2: " << sList[2] << "\n"; // 10
 
+    try {
+        sList.insert(100, 99); // This will throw an exception
+    } catch (const std::out_of_range& e) {
+        std::cerr << "Error: " << e.what() << "\n";
+    }
+
     return 0;
 }
